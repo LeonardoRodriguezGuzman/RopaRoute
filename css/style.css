@@ -1,7 +1,26 @@
 body {
     background-color: #f5f5f5;
+    font-size: 14px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .card {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  
+  @media (min-width: 768px) {
+    /* Estilos para desktops */
+    body {
+      font-size: 18px;
+    }
+    
+    .container {
+      width: 500px;
+    }
   }
