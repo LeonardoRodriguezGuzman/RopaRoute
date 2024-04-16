@@ -1,32 +1,37 @@
 const express = require("express");
-const mysql = require("mysql2");
 const query = require("./Consultas");
+const cors = require("cors");
 
 const app = express();
 
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "ULI20190",
-  database: "ropa_route"
-});
-
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("hola1");
 });
 
 app.post("/login", (req, res) => {
-  
-    query.getUsuario(req.body.correo, (error, result)=>{
-        if(error){
-            console.log('error :(');
-        }else{
-            res.send(result);
-        }
-    });
-    
+  //console.log(req.body.correo);
+  query.getUsuario(req.body.correo, (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      //console.log(result);
+      res.send(result);
+    }
+  });
+});
+
+app.post("/registro", (req, res) => {
+  query.crearUsuario(req.body, (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      //console.log(result);
+      res.send(result);
+    }
+  });
 });
 
 app.listen(3000);

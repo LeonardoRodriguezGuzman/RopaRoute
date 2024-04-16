@@ -17,7 +17,13 @@ function conectar(){
   });
 }
 function desconectar(){
-  connection.destroy();
+  connection.end((err) => {
+    if (err) {
+      console.error("Error al cerrar la conexión a la base de datos:", err.message);
+      return;
+    }
+    console.log('Conexión cerrada correctamente');
+  });
 }
 
 module.exports={conectar, desconectar,connection};
