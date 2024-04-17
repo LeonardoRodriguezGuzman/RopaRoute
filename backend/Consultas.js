@@ -1,15 +1,15 @@
 const { conectar, desconectar, connection } = require("./Conexion");
 
-function getUsuario(correo, callback) {
+function getUsuario({user,password}, callback) {
   conectar();
-  const sql = "select * from usuario where correo=?";
-  const values = [correo];
+  const sql = "select * from usuario where nombre=? and password=?";
+  const values = [user,password];
   connection.query(sql, values, (error, results, fields) => {
     // desconectar();
     if (error) {
       callback(error, null);
     } else {
-      callback(null, results[0]);
+      callback(null, results);
     }
   });
 }

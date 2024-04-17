@@ -7,11 +7,12 @@ const btnLogin = document.getElementById("btnLogin");
 btnLogin.addEventListener("click", (e) => {
   e.preventDefault();
   // Realizar la solicitud POST
-  const correo = "ejemplo@gmail.com"; // El correo del usuario que deseas buscar
+  // El correo del usuario que deseas buscar
 
   axios
     .post("http://localhost:3000/login", {
-      correo: correo,
+      user: user.value,
+      password: password.value
     })
     .then(function (response) {
       console.log("Respuesta del servidor:", response.data);

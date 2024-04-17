@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 
 app.post("/login", (req, res) => {
   //console.log(req.body.correo);
-  query.getUsuario(req.body.correo, (error, result) => {
+  query.getUsuario(req.body, (error, result) => {
     if (error) {
       console.log(error);
     } else {
