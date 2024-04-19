@@ -10,7 +10,8 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/StylesPerfil.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="css/card.css">
+    <title>RopaRoute</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,11 +39,42 @@
               </li>
             </ul>
             <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
           </div>
         </div>
     </nav>
+
+    <div class="card-body d-flex align-items-start">
+      <div>
+        <img src="img/logo.png" class="card-img-top" alt="">
+      </div>
+      <div>
+        <p class="card-text flex-grow-1 tienda">Vaquero Shop</p>
+        <p class="card-text flex-grow-1 direccion">16 de septiembre #12, Uriangato, Gto, MX</p>
+      </div>
+    </div>
+    
+</div>
+<script>
+  // Get all card elements
+const cards = document.querySelectorAll(".card");
+
+// Add event listener to each card
+cards.forEach(card => {
+  card.addEventListener("click", function() {
+    // Get the address element from the clicked card
+    const addressElement = this.querySelector(".card-text.direccion");
+
+    // Extract the address text
+    const address = addressElement.textContent;
+
+    // Display the address in an alert or any other way you prefer
+    alert(`La dirección es: ${address}`);
+  });
+});
+
+</script>
 </body>
 </html>
