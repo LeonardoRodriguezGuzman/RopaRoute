@@ -12,13 +12,14 @@ app.get("/", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  //console.log(req.body.correo);
   query.getUsuario(req.body, (error, result) => {
-    if (error) {
-      console.log(error);
-    } else {
-      //console.log(result);
-      res.send(result);
+    
+    if (error || result.length==0) {
+      console.log(":(");
+      res.send([-1]);
+    } else  {
+      res.send([result[0].id]);
+    // console.log(result);
     }
   });
 });
@@ -33,6 +34,18 @@ app.post("/registro", (req, res) => {
     }
   });
 });
+
+app.get("/tiendas", (req, res)=>{
+  query.getTiendas((error, result)=>{
+    if(error){
+      console.log(error);
+    }else{
+      res.send(result);
+    }
+  });
+});
+
+
 
 app.listen(3000);
 console.log("server en el puerto 3000");

@@ -4,7 +4,7 @@ const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "ULI20190",
-  database: "ropa_route"
+  database: "ropa__route"
 });
 
 function conectar(){
