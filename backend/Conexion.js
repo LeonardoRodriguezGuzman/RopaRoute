@@ -1,13 +1,13 @@
-const mysql = require("mysql2");
+import mysql from "mysql2";
 
-const connection = mysql.createConnection({
+export const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "ULI20190",
   database: "ropa__route"
 });
 
-function conectar(){
+export function conectar(){
   connection.connect((err) => {
     if (err) {
       console.error("Error al conectar a la base de datos: ", err);
@@ -16,7 +16,7 @@ function conectar(){
     console.log('conectado :)');
   });
 }
-function desconectar(){
+export function desconectar(){
   connection.end((err) => {
     if (err) {
       console.error("Error al cerrar la conexión a la base de datos:", err.message);
@@ -26,4 +26,4 @@ function desconectar(){
   });
 }
 
-module.exports={conectar, desconectar,connection};
+//module.exports={conectar, desconectar,connection};

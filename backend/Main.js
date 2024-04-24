@@ -1,42 +1,68 @@
-const express = require("express");
-const query = require("./Consultas");
-const cors = require("cors");
+import express from "express";
+import {getTiendas,crearUsuario,getUsuario} from "./Consultas.js";
+import cors from "cors";
+import {dirname, join} from "path";
+import {fileURLToPath} from "url";
+
 
 const app = express();
+const _dirname=dirname(fileURLToPath(import.meta.url));
 
+//app.set("views", join(_dirname,'..','views'));
+app.set('view engine','ejs');
 app.use(express.json());
 app.use(cors());
+app.use(express.static(join(_dirname,'..','pages')));
+app.use(express.static(join(_dirname,'..','css')));
+app.use(express.static(join(_dirname,'..','js')));
+app.use(express.static(join(_dirname,'..','img')));
 
-app.get("/", (req, res) => {
-  res.send("hola1");
+
+console.log(_dirname);
+//app.use('/css', express.static(path.join(__dirname, 'css')));
+
+//console.log(join(_dirname,'..','views'));
+
+app.get("/perfil", (req, res) => {
+  //res.sendFile(join(_dirname,"..","pages","login.html"));
 });
 
+app.get("/", (req, res) => {
+  res.sendFile(join(_dirname,"..","pages","login.html"));
+});
+
+
 app.post("/login", (req, res) => {
-  query.getUsuario(req.body, (error, result) => {
+  getUsuario(req.body, (error, result) => {
     
     if (error || result.length==0) {
-      console.log(":(");
+      //console.log(":(");
       res.send([-1]);
     } else  {
-      res.send([result[0].id]);
+      res.send([result[0].id, result[0].rol]);
+      
     // console.log(result);
     }
   });
 });
 
 app.post("/registro", (req, res) => {
-  query.crearUsuario(req.body, (error, result) => {
+  crearUsuario(req.body, (error, result) => {
     if (error) {
       console.log(error);
     } else {
       //console.log(result);
+      //res.sendFile(join(_dirname,"..","pages","login.html"));
       res.send(result);
+      
     }
   });
 });
 
+
+
 app.get("/tiendas", (req, res)=>{
-  query.getTiendas((error, result)=>{
+  getTiendas((error, result)=>{
     if(error){
       console.log(error);
     }else{

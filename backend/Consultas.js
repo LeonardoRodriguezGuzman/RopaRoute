@@ -1,6 +1,6 @@
-const { conectar, connection } = require("./Conexion");
+import { conectar, connection }  from "./Conexion.js";
 
-function getUsuario({ user, password }, callback) {
+export function getUsuario({ user, password }, callback) {
   conectar();
   const sql = "select * from usuario where nombre=? and password=?";
   const values = [user, password];
@@ -44,7 +44,7 @@ function getUserInfo({ id }, callback) {
   }
 }
 
-function crearUsuario({ user, correo, password, direccion, rol }, callback) {
+export function crearUsuario({ user, correo, password, direccion, rol }, callback) {
   conectar();
   const sql = "insert into usuario values(null,?,?,?,?,?)";
   const values = [user, correo, password, direccion, rol];
@@ -58,7 +58,7 @@ function crearUsuario({ user, correo, password, direccion, rol }, callback) {
   });
 }
 
-function getTiendas(callback) {
+export function getTiendas(callback) {
   conectar();
   const sql = "select*from tienda";
   connection.query(sql, (error, results, fields) => {
@@ -71,4 +71,4 @@ function getTiendas(callback) {
   });
 }
 
-module.exports = { getUsuario, crearUsuario, getTiendas };
+//module.export = { getUsuario, crearUsuario, getTiendas };
