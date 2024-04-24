@@ -1,5 +1,5 @@
 import express from "express";
-import {getTiendas,crearUsuario,getUsuario} from "./Consultas.js";
+import {getTiendas,crearUsuario,getUsuario,crearTienda} from "./Consultas.js";
 import cors from "cors";
 import {dirname, join} from "path";
 import {fileURLToPath} from "url";
@@ -59,6 +59,16 @@ app.post("/registro", (req, res) => {
   });
 });
 
+
+app.post("/addTienda", (req, res) => {
+  crearTienda(req.body, (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.send(result);
+    }
+  });
+});
 
 
 app.get("/tiendas", (req, res)=>{

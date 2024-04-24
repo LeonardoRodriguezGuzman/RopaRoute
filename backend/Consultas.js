@@ -71,4 +71,18 @@ export function getTiendas(callback) {
   });
 }
 
+export function crearTienda({nombre,ubicacion,descripcion,idUser},callback) {
+  conectar();
+  const sql = "insert into tienda values(null,?,?,?,?)";
+  const values = [nombre,ubicacion,descripcion,idUser];
+  connection.query(sql, values,(error, results, fields) => {
+    // desconectar();
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, "ok");
+    }
+  });
+}
+
 //module.export = { getUsuario, crearUsuario, getTiendas };
