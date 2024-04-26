@@ -45,3 +45,21 @@ listaOpciones.firstElementChild.classList.add('active');
 
 // Actualizar la lista de opciones al iniciar
 actualizarListaOpciones('');
+
+
+function copiarDireccion(id) {
+  const addressElement = document.getElementById(id);
+  if (!addressElement) {
+    console.error(`Element with id "${id}" not found.`);
+    return;
+  }
+  const address = addressElement.textContent;
+  navigator.clipboard.writeText(address).then(
+    () => {
+      console.log(`La dirección ${address} ha sido copiada al portapapeles.`);
+    },
+    (error) => {
+      console.error(`Error al copiar la dirección: ${error.message}`);
+    }
+  );
+}

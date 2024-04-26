@@ -46,35 +46,36 @@
         </div>
     </nav>
 
-    <div class="card-body d-flex align-items-start">
-      <div>
-        <img src="img/logo.png" class="card-img-top" alt="">
+    <div class="card mt-2" style="width: 30rem; margin-left: 3px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="img/logo.png" class="card-img" alt="...">
       </div>
-      <div>
-        <p class="card-text flex-grow-1 tienda">Vaquero Shop</p>
-        <p class="card-text flex-grow-1 direccion">16 de septiembre #12, Uriangato, Gto, MX</p>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Cowboy Store</h5>
+          <p class="card-text" id="direccion1">Calle 16 de Septiembre 34, Uriangato, Guanajuato, México</p>
+          <button class="btn btn-light" onclick="copiarDireccion('direccion1')">Detalles</button>
+        </div>
       </div>
     </div>
-    
+  </div>
+  <div class="card mt-2" style="width: 30rem; margin-left: 3px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="img/logo.png" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Blusas Perla</h5>
+          <p class="card-text" id="direccion2">Calle 16 de Septiembre 21, Uriangato, Guanajuato, México</p>
+          <button class="btn btn-light" onclick="copiarDireccion('direccion2')">Detalles</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<script>
-  // Get all card elements
-const cards = document.querySelectorAll(".card");
 
-// Add event listener to each card
-cards.forEach(card => {
-  card.addEventListener("click", function() {
-    // Get the address element from the clicked card
-    const addressElement = this.querySelector(".card-text.direccion");
-
-    // Extract the address text
-    const address = addressElement.textContent;
-
-    // Display the address in an alert or any other way you prefer
-    alert(`La dirección es: ${address}`);
-  });
-});
-
-</script>
+<script src="js/buscar.js"></script>
 </body>
 </html>
