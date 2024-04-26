@@ -21,7 +21,7 @@
         <button class="bi bi-three-dots" type="submit" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
     </div>
   </nav>
-    <div class="card mt-2" style="width: 25rem; margin-left: 3px;">
+    <!-- <div class="card mt-2" style="width: 25rem; margin-left: 3px;">
       <div class="row no-gutters">
         <div class="col-md-4">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGVXhWE5fviq0glu2ppMdyaNC5xOPmMgzbibJnnIIORetvh8j9g9I2KLgp0Spk24ok8XE" class="card-img" alt="">
@@ -36,6 +36,44 @@
           </div>
         </div>
       </div>
+    </div> -->
+   
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="editNombre" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="editNombre">
+              </div>
+              <div class="mb-3">
+                <label for="editUbicacion" class="col-form-label">Ubicacion:</label>
+                <input type="text" class="form-control" id="editUbicacion">
+              </div>
+              <div class="mb-3">
+                <label for="editTelefono" class="col-form-label">Telefono:</label>
+                <input type="text" class="form-control" id="editTelefono">
+              </div>
+              <div class="mb-3">
+                <label for="editDescrip" class="col-form-label">Descripción:</label>
+                <textarea class="form-control" id="editDescrip"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="btnAceptar">Aceptar</button>
+          </div>
+        </div>
+      </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="./negocios.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 import express from "express";
-import {getTiendas,crearUsuario,getUsuario,crearTienda} from "./Consultas.js";
+import {getTiendas,crearUsuario,getUsuario,crearTienda,getTiendasVendedor,eliminarTienda, actualizarTienda} from "./Consultas.js";
 import cors from "cors";
 import {dirname, join} from "path";
 import {fileURLToPath} from "url";
@@ -28,9 +28,19 @@ app.get("/perfil", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(join(_dirname,"..","pages","login.html"));
+  res.sendFile(join(_dirname,"..","index.html"));
 });
 
+/* app.get("/tiendasIndex", (req, res) => {
+  getTiendas2((error,result)=>{
+    if(error){
+      res.send(error);
+    }else{
+      res.send(result);
+    }
+  });
+  
+}); */
 
 app.post("/login", (req, res) => {
   getUsuario(req.body, (error, result) => {
@@ -70,6 +80,15 @@ app.post("/addTienda", (req, res) => {
   });
 });
 
+app.post("/tiendas", (req, res)=>{
+  getTiendasVendedor(req.body,(error, result)=>{
+    if(error){
+      console.log(error);
+    }else{
+      res.send(result);
+    }
+  });
+});
 
 app.get("/tiendas", (req, res)=>{
   getTiendas((error, result)=>{
@@ -81,7 +100,27 @@ app.get("/tiendas", (req, res)=>{
   });
 });
 
+app.post("/eliminarTienda", (req, res)=>{
+  eliminarTienda(req.body,(error, result)=>{
+    if(error){
+      console.log(error);
+      res.send("error");
+    }else{
+      res.send(result);
+    }
+  });
+});
 
+app.post("/actualizarTienda", (req, res)=>{
+  actualizarTienda(req.body,(error, result)=>{
+    if(error){
+      console.log(error);
+      res.send("error");
+    }else{
+      res.send(result);
+    }
+  });
+});
 
 app.listen(3000);
 console.log("server en el puerto 3000");

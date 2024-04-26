@@ -71,16 +71,55 @@ export function getTiendas(callback) {
   });
 }
 
-export function crearTienda({nombre,ubicacion,descripcion,idUser},callback) {
+export function crearTienda({nombre,ubicacion,telefono,descripcion,idUser},callback) {
   conectar();
-  const sql = "insert into tienda values(null,?,?,?,?)";
-  const values = [nombre,ubicacion,descripcion,idUser];
+  const sql = "insert into tienda values(null,?,?,?,?,?)";
+  const values = [nombre,ubicacion,telefono,descripcion,idUser];
   connection.query(sql, values,(error, results, fields) => {
     // desconectar();
     if (error) {
       callback(error, null);
     } else {
       callback(null, "ok");
+    }
+  });
+}
+export function getTiendasVendedor({id},callback) {
+  conectar();
+  const sql = "select*from tienda where idVendedor=?";
+  const values = [id];
+  connection.query(sql, values, (error, results, fields) => {
+    // desconectar();
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+export function eliminarTienda({id},callback) {
+  conectar();
+  const sql = "delete from tienda where idTienda=?";
+  const values = [id];
+  connection.query(sql, values, (error, results, fields) => {
+    // desconectar();
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+export function actualizarTienda({idTienda,nombre,ubicacion,telefono,descripcion},callback) {
+  conectar();
+  const sql = "update tienda set nombre=?, ubicacion=?, telefono=?,descripcion=? where idTienda=?";
+  const values = [nombre,ubicacion,telefono,descripcion,idTienda];
+  connection.query(sql, values, (error, results, fields) => {
+    // desconectar();
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
     }
   });
 }
