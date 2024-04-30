@@ -4,6 +4,41 @@ let txtUbicacion=document.getElementById("txtUbicacion");
 let txtDescripcion=document.getElementById("txtDescripcion");
 let txtTelefono=document.getElementById("txtTelefono");
 
+
+let navPerfil = document.getElementById("perfil");
+let navLogin = document.getElementById("login");
+let navNegocios = document.getElementById("negocios");
+let navLogout = document.getElementById("logout");
+let idUser;
+let favoritos = JSON.parse(localStorage.getItem("favoritos"));
+let datos = null;
+
+//console.log(navPerfil);
+
+navLogout.addEventListener("click", (e) => {
+  e.preventDefault();
+  localStorage.setItem("user", -1);
+  localStorage.setItem("rol", "?");
+  window.location.href = "index.html";
+});
+
+document.addEventListener("DOMContentLoaded", function (e) {
+
+  
+  let rol = localStorage.getItem("rol");
+  if (rol == "Comprador") {
+    navNegocios.style.display = "none";
+  } else if (rol == "Vendedor") {
+    navLogin.style.display = "none";
+  } else if (rol == "?" || rol == null) {
+    navNegocios.style.display = "none";
+    navPerfil.style.display = "none";
+    navLogout.style.display = "none";
+  }
+  
+  
+});
+
 btnCrear.addEventListener("click",(e)=>{
     e.preventDefault();
     let id=parseInt(localStorage.getItem("user"));
@@ -19,6 +54,7 @@ btnCrear.addEventListener("click",(e)=>{
       console.log("Respuesta del servidor:", response.data);
       if(response.data=="ok"){
         alert("Registro de tienda exitoso");
+        window.location.href="negocios.html";
         txtNombre.value="";
         txtUbicacion.value="";
         txtDescripcion.value="";

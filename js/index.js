@@ -1,36 +1,50 @@
 let navPerfil = document.getElementById("perfil");
 let navLogin = document.getElementById("login");
 let navNegocios = document.getElementById("negocios");
-let navLogout=document.getElementById("logout");
+let navLogout = document.getElementById("logout");
 let idUser;
-let favoritos=JSON.parse(localStorage.getItem("favoritos"));
-let datos=null;
+let favoritos = JSON.parse(localStorage.getItem("favoritos"));
+let datos = null;
 
-navLogout.addEventListener("click",(e)=>{
-    e.preventDefault();
-    localStorage.setItem('user',-1);
-    localStorage.setItem('rol','?');
-    window.location.href="index.html";
+navLogout.addEventListener("click", (e) => {
+  e.preventDefault();
+  localStorage.setItem("user", -1);
+  localStorage.setItem("rol", "?");
+  window.location.href = "index.html";
 });
 
 document.addEventListener("DOMContentLoaded", function (e) {
   //datos = localStorage.getItem("tiendas");
   let rol = localStorage.getItem("rol");
   if (rol == "Comprador") {
-    navNegocios.style.display="none";
-  }else if(rol=="Vendedor"){
-    navLogin.style.display="none";
-  }else if(rol=="?" || rol==null){
-    navNegocios.style.display="none";
-    navPerfil.style.display="none";
-    navLogout.style.display='none';
+    navNegocios.style.display = "none";
+  } else if (rol == "Vendedor") {
+    navLogin.style.display = "none";
+  } else if (rol == "?" || rol == null) {
+    navNegocios.style.display = "none";
+    navPerfil.style.display = "none";
+    navLogout.style.display = "none";
   }
-  
-    cargarTiendas();
- 
+
+  cargarTiendas();
 });
 
 function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
+  var botonInfo = document.createElement("button");
+
+  // Agregar atributos al botón
+  botonInfo.setAttribute("type", "button");
+  botonInfo.setAttribute("class", "btn btn-primary");
+  botonInfo.setAttribute("data-bs-toggle", "modal");
+  botonInfo.setAttribute("data-bs-target", "#exampleModal");
+  botonInfo.setAttribute("id", "btnInfo");
+  botonInfo.textContent = "Ver más";
+
+  botonInfo.addEventListener("click", () => {
+    document.getElementById("modalContent").textContent = descripcion;
+  });
+
+  let rol = localStorage.getItem("rol");
   // Creación de la tarjeta
   const card = document.createElement("div");
   card.classList.add("card", "mt-2");
@@ -78,24 +92,54 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
   paragraph2.textContent = telefono;
 
   // Creación del enlace de editar
-    const editLink = document.createElement("a");
+  const editLink = document.createElement("a");
   editLink.href = "#";
   editLink.classList.add("btn", "btn-light");
   //editLink.setAttribute("data-bs-toggle", "modal");
   //editLink.setAttribute("data-bs-target", "#exampleModal");
   //editLink.setAttribute("data-bs-whatever", "@mdo");
   editLink.textContent = "Añadir a Favoritos";
-  editLink.value="ok";
+  editLink.value = "ok";
   editLink.addEventListener("click", (e) => {
     e.preventDefault();
-    if(editLink.value=="ok"){
-        editLink.textContent="Quitar de Favoritos";
-        editLink.value="no";
-    }else{
-        editLink.textContent="Añadir a Favoritos";
-        editLink.value="ok";
+    if (editLink.value == "ok") {
+      editLink.textContent = "Quitar de Favoritos";
+      editLink.value = "no";
+
+      axios
+        .post("http://localhost:3000/addFavorito", {
+          idTienda: idTienda,
+          idUser: localStorage.getItem("user"),
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.error(
+            "Ocurrió un error al realizar la solicitud POST:",
+            error
+          );
+        });
+    } else {
+      axios
+        .post("http://localhost:3000/elimFavorito", {
+          idTienda: idTienda,
+          idUser: localStorage.getItem("user"),
+        })
+        .then(function (response) {
+          // console.log(response.data);
+          window.location.reload();
+        })
+        .catch(function (error) {
+          console.error(
+            "Ocurrió un error al realizar la solicitud POST:",
+            error
+          );
+        });
+      editLink.textContent = "Añadir a Favoritos";
+      editLink.value = "ok";
     }
-  }); 
+  });
 
   // Creación del enlace de eliminar
   /* const deleteLink = document.createElement("a");
@@ -112,8 +156,12 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
   cardBody.appendChild(title);
   cardBody.appendChild(paragraph1);
   cardBody.appendChild(paragraph2);
-   cardBody.appendChild(editLink);
-  //cardBody.appendChild(deleteLink); 
+  if (rol != "?") {
+    cardBody.appendChild(editLink);
+  }
+  cardBody.appendChild(botonInfo);
+
+  //cardBody.appendChild(deleteLink);
 
   // Agregar el cuerpo de la tarjeta a la columna del cuerpo de la tarjeta
   bodyColumn.appendChild(cardBody);
@@ -129,14 +177,13 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
   document.body.appendChild(card);
 }
 
-
 function cargarTiendas() {
   axios
     .get("http://localhost:3000/tiendas", {})
     .then(function (response) {
       // console.log(response.data);
-      localStorage.setItem("data",JSON.stringify(response.data));
-      datos=JSON.parse(localStorage.getItem("data"));
+      localStorage.setItem("data", JSON.stringify(response.data));
+      datos = JSON.parse(localStorage.getItem("data"));
       response.data.forEach((element) => {
         generarTienda(element);
       });

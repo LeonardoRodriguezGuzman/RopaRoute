@@ -5,6 +5,25 @@ let editDescrip=document.getElementById("editDescrip");
 let editTelefono=document.getElementById("editTelefono");
 let idTiendaActualizar=null;
 
+let navPerfil = document.getElementById("perfil");
+let navLogin = document.getElementById("login");
+let navNegocios = document.getElementById("negocios");
+let navLogout = document.getElementById("logout");
+let idUser;
+let favoritos = JSON.parse(localStorage.getItem("favoritos"));
+let datos = null;
+
+
+navLogout.addEventListener("click", (e) => {
+  e.preventDefault();
+  localStorage.setItem("user", -1);
+  localStorage.setItem("rol", "?");
+  window.location.href = "index.html";
+});
+
+
+
+
 btnAceptar.addEventListener("click", ()=>{
   //console.log(idTiendaActualizar);
   axios
@@ -47,14 +66,19 @@ function cargarTiendas(){
 
 document.addEventListener("DOMContentLoaded", function (e) {
 
-  datos = localStorage.getItem("tiendas");
-  /* let rol=localStorage.getItem("rol");
-    if(rol=="Comprador" || rol=="?"){
-        //window.location.href = "./404.html";
-    } */
-  if (datos == null) {
-    cargarTiendas();
+  
+  let rol = localStorage.getItem("rol");
+  if (rol == "Comprador") {
+    navNegocios.style.display = "none";
+  } else if (rol == "Vendedor") {
+    navLogin.style.display = "none";
+  } else if (rol == "?" || rol == null) {
+    navNegocios.style.display = "none";
+    navPerfil.style.display = "none";
+    navLogout.style.display = "none";
   }
+  cargarTiendas();
+  
 });
 
 
@@ -76,7 +100,7 @@ function generarTienda({ idTienda, nombre, ubicacion , telefono, descripcion}) {
   // Creación de la imagen
   const img = document.createElement("img");
   img.src =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGVXhWE5fviq0glu2ppMdyaNC5xOPmMgzbibJnnIIORetvh8j9g9I2KLgp0Spk24ok8XE";
+    "shopping-store.png";
   img.classList.add("card-img");
   img.alt = "";
 

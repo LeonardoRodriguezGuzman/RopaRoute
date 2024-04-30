@@ -13,30 +13,60 @@
     <title>Document</title>
 </head>
 <body>
-  <nav class="navbar bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <button class="btn btn-light d-lg-none" aria-label="Atrás">Atrás</button>
-      <a class="navbar-brand" style="color: black;">Lista de negocios</a>
-      <form class="d-flex" role="combobox">
-        <button class="bi bi-three-dots" type="submit" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
+      <a class="navbar-brand" href="index.html">RopaRoute</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item" id="perfil">
+            <a class="nav-link" href="./perfil.html">Perfil</a>
+          </li>
+          <li class="nav-item" id="login">
+            <a class="nav-link" href="./login.html">Login</a>
+          </li>
+          <li class="nav-item" id="logout">
+            <a class="nav-link" href="./login.html">Cerrar Sesión</a>
+          </li>
+          <li class="nav-item dropdown" id="negocios">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Mis negocios
+            </a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <li>
+                <a class="dropdown-item" href="AgregarTienda.html">Agregar Negocio</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="negocios.html"
+                  >Editar negocios</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
-    <!-- <div class="card mt-2" style="width: 25rem; margin-left: 3px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGVXhWE5fviq0glu2ppMdyaNC5xOPmMgzbibJnnIIORetvh8j9g9I2KLgp0Spk24ok8XE" class="card-img" alt="">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Cowboy Store</h5>
-            <p class="card-text">Calle 16 de Septiembre 34</p>
-            <p class="card-text">Uriangato, Guanajuato, México</p>
-            <a href="#" class="btn btn-light">Editar</a>
-            <a href="#" class="btn btn-light">Eliminar</a>            
-          </div>
-        </div>
-      </div>
-    </div> -->
    
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">

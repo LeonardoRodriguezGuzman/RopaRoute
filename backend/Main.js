@@ -1,5 +1,5 @@
 import express from "express";
-import {getTiendas,crearUsuario,getUsuario,crearTienda,getTiendasVendedor,eliminarTienda, actualizarTienda} from "./Consultas.js";
+import {getTiendas,crearUsuario,getUsuario,crearTienda,getTiendasVendedor,eliminarTienda, actualizarTienda,addFavorito,getFavorito,elimFavorito} from "./Consultas.js";
 import cors from "cors";
 import {dirname, join} from "path";
 import {fileURLToPath} from "url";
@@ -113,6 +113,37 @@ app.post("/eliminarTienda", (req, res)=>{
 
 app.post("/actualizarTienda", (req, res)=>{
   actualizarTienda(req.body,(error, result)=>{
+    if(error){
+      console.log(error);
+      res.send("error");
+    }else{
+      res.send(result);
+    }
+  });
+});
+
+app.post("/addFavorito", (req, res)=>{
+  addFavorito(req.body,(error, result)=>{
+    if(error){
+      console.log(error);
+      res.send("error");
+    }else{
+      res.send(result);
+    }
+  });
+});
+app.post("/getFavorito", (req, res)=>{
+  getFavorito(req.body,(error, result)=>{
+    if(error){
+      console.log(error);
+      res.send("error");
+    }else{
+      res.send(result);
+    }
+  });
+});
+app.post("/elimFavorito", (req, res)=>{
+  elimFavorito(req.body,(error, result)=>{
     if(error){
       console.log(error);
       res.send("error");

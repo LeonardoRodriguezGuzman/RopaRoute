@@ -124,4 +124,46 @@ export function actualizarTienda({idTienda,nombre,ubicacion,telefono,descripcion
   });
 }
 
+export function addFavorito({idTienda, idUser},callback) {
+  conectar();
+  const sql = "insert into favoritos values(null,?,?)";
+  const values = [idTienda,idUser];
+  connection.query(sql, values, (error, results, fields) => {
+    // desconectar();
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+
+export function getFavorito({idUser},callback) {
+  conectar();
+  const sql = "SELECT ti.* FROM favoritos f JOIN tienda ti ON f.idTienda = ti.idTienda WHERE f.idUser = ?";
+  const values = [idUser];
+  connection.query(sql, values, (error, results, fields) => {
+    // desconectar();
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+
+export function elimFavorito({idTienda,idUser},callback) {
+  conectar();
+  const sql = "delete from favoritos where idTienda=? and idUser=?";
+  const values = [idTienda,idUser];
+  connection.query(sql, values, (error, results, fields) => {
+    // desconectar();
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+
 //module.export = { getUsuario, crearUsuario, getTiendas };
