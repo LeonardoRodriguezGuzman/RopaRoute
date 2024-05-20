@@ -107,7 +107,7 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
       editLink.value = "no";
 
       axios
-        .post("http://192.168.20.94:3000/addFavorito", {
+        .post("http://localhost:3000/addFavorito", {
           idTienda: idTienda,
           idUser: localStorage.getItem("user"),
         })
@@ -122,7 +122,7 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
         });
     } else {
       axios
-        .post("http://192.168.20.94:3000/elimFavorito", {
+        .post("http://localhost:3000/elimFavorito", {
           idTienda: idTienda,
           idUser: localStorage.getItem("user"),
         })
@@ -179,7 +179,7 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
 
 function cargarTiendas() {
   axios
-    .get("http://192.168.20.94:3000/tiendas", {})
+    .get("http://20.81.133.217:3000/tiendas", {})
     .then(function (response) {
       // console.log(response.data);
       localStorage.setItem("data", JSON.stringify(response.data));

@@ -20,7 +20,7 @@ btnLogin.addEventListener("click", (e) => {
 
   // Si los campos no están vacíos, enviar la solicitud al servidor
   axios
-    .post("http://192.168.20.94:3000/login", {
+    .post("http://localhost:3000/login", {
       user: userInput,
       password: passwordInput,
     })
