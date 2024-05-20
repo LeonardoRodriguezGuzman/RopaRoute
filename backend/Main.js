@@ -22,25 +22,21 @@ console.log(_dirname);
 //app.use('/css', express.static(path.join(__dirname, 'css')));
 
 //console.log(join(_dirname,'..','views'));
+app.get("/index.js", (req, res) => {
+
+  res.sendFile(join(_dirname,"..","index.js"));
+  
+});
 
 app.get("/perfil", (req, res) => {
   //res.sendFile(join(_dirname,"..","pages","login.html"));
 });
 
 app.get("/", (req, res) => {
+  console.log('hola');
   res.sendFile(join(_dirname,"..","index.html"));
 });
 
-/* app.get("/tiendasIndex", (req, res) => {
-  getTiendas2((error,result)=>{
-    if(error){
-      res.send(error);
-    }else{
-      res.send(result);
-    }
-  });
-  
-}); */
 
 app.post("/login", (req, res) => {
   getUsuario(req.body, (error, result) => {
@@ -153,5 +149,5 @@ app.post("/elimFavorito", (req, res)=>{
   });
 });
 
-app.listen(3000);
+app.listen(3000,"192.168.20.94");
 console.log("server en el puerto 3000");
