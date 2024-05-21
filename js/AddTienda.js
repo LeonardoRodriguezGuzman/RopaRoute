@@ -59,7 +59,7 @@ btnCrear.addEventListener("click",(e)=>{
 
   let id = parseInt(localStorage.getItem("user"));
   axios
-  .post("http://192.168.20.94:3000/AddTienda", {
+  .post("http://localhost:3000/AddTienda", {
       nombre: nombre,
       ubicacion: ubicacion,
       telefono: telefono,

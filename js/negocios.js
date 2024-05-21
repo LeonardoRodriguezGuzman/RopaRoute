@@ -38,11 +38,12 @@ btnAceptar.addEventListener("click", () => {
     alert("Por favor, ingresa un número de teléfono válido de 10 dígitos.");
     return;
   }
+});
 
 btnAceptar.addEventListener("click", ()=>{
   //console.log(idTiendaActualizar);
   axios
-  .post("http://192.168.20.94:3000/actualizarTienda", {
+  .post("http://localhost:3000/actualizarTienda", {
 
     idTienda: idTiendaActualizar,
     nombre: nombre,
@@ -62,7 +63,7 @@ btnAceptar.addEventListener("click", ()=>{
 
 function cargarTiendas(){
   axios
-  .post("http://192.168.20.94:3000/tiendas", {
+  .post("http://localhost:3000/tiendas", {
     id: localStorage.getItem("user"),
   })
   .then(function (response) {
@@ -169,7 +170,7 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
 
 function eliminar(id) {
   axios
-    .post("http://192.168.20.94:3000/eliminarTienda", {
+  .post("http://localhost:3000/eliminarTienda", {
       id: id
     })
     .then(function (response) {
@@ -178,5 +179,4 @@ function eliminar(id) {
     .catch(function (error) {
       console.error("Ocurrió un error al realizar la solicitud POST:", error);
     });
-}
-
+  }

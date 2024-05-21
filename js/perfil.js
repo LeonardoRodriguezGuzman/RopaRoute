@@ -84,7 +84,7 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
     editLink.addEventListener("click", (e) => {
       e.preventDefault();
       axios
-      .post("http://192.168.20.94:3000/elimFavorito", {
+      .post("http://localhost:3000/elimFavorito", {
         idTienda:idTienda,
         idUser:localStorage.getItem("user"),
       })
@@ -134,7 +134,7 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
 
   function cargarTiendas() {
     axios
-      .post("http://192.168.20.94:3000/getFavorito", {
+      .post("http://localhost:3000/getFavorito", {
         idUser:localStorage.getItem("user")
       })
       .then(function (response) {

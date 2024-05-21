@@ -38,7 +38,7 @@ function registrarNuevoUsuario() {
   }
 
   axios
-    .post("http://192.168.20.94:3000/registro", {
+    .post("http://localhost:3000/registro", {
       user: usuario,
       password: contraseña,
       correo: correo,
