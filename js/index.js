@@ -42,7 +42,42 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
 
   botonInfo.addEventListener("click", () => {
     document.getElementById("modalContent").textContent = descripcion;
+
+    // Código para generar el mapa dentro del modal
+    var mapContainer = document.getElementById("mapContainer");
+
+    // Verificar si mapContainer existe antes de continuar
+    if (!mapContainer) {
+      console.error("El elemento mapContainer no se encontró en el modal.");
+      return; // Salir de la función si no se encuentra el elemento
+    }
+
+    mapContainer.style.display = "block"; // Mostrar el mapa
+
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: ubicacion }, function (results, status) {
+      if (status === "OK") {
+        // Verificar si google está definido (API de Google Maps cargada)
+        console.log("Geocodificación exitosa:", results[0].geometry.location);
+        if (typeof google !== "undefined") {
+          var map = new google.maps.Map(mapContainer, {
+            center: results[0].geometry.location,
+            zoom: 15,
+          });
+          new google.maps.Marker({
+            map,
+            position: results[0].geometry.location,
+          });
+        } else {
+          console.error("La API de Google Maps no está cargada.");
+        }
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+        console.error("Error en la geocodificación:", status);
+      }
+    });
   });
+
 
   let rol = localStorage.getItem("rol");
   // Creación de la tarjeta
@@ -191,4 +226,7 @@ function cargarTiendas() {
     .catch(function (error) {
       console.error("Ocurrió un error al realizar la solicitud POST:", error);
     });
+}
+
+function initMap() {
 }

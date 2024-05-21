@@ -91,6 +91,7 @@
             ></button>
           </div>
           <div class="modal-body" id="modalContent"></div>
+          <div id="mapContainer" style="width: 100%; height: 400px;"></div>
           <div class="modal-footer">
             <button
               type="button"
@@ -103,7 +104,7 @@
         </div>
       </div>
     </div>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQBraU1NXlGxGMweLGA9jiErCsr1PaI10&callback=initMap" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -111,5 +112,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="index.js"></script>
+
   </body>
 </html>
