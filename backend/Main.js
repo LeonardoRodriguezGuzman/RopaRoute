@@ -149,5 +149,5 @@ app.post("/elimFavorito", (req, res)=>{
   });
 });
 
-app.listen(3000,"192.168.20.94");
+app.listen(3000,"localhost");
 console.log("server en el puerto 3000");
