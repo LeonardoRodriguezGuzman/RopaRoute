@@ -3,8 +3,8 @@ import mysql from "mysql2";
 export const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "roparoute",
-  database: "ropa__route"
+  password: "root",
+  database: "ropa_route"
 });
 
 export function conectar(){
