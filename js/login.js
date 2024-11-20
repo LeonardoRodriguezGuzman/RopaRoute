@@ -12,11 +12,12 @@ btnLogin.addEventListener("click", (e) => {
   const userInput = user.value.trim();
   const passwordInput = password.value.trim();
 
-  // Verificar si los campos están vacíos
   if (userInput === '' || passwordInput === '') {
-    alert("Por favor, completa todos los campos.");
-    return; // Detener la ejecución si hay campos vacíos
-  }
+    const errorMessage = document.getElementById('error-message');
+    errorMessage.textContent = "Por favor, completa todos los campos.";
+    return;
+}
+
 
   // Si los campos no están vacíos, enviar la solicitud al servidor
   axios
