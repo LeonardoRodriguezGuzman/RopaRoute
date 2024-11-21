@@ -87,3 +87,6 @@ form input:focus, form textarea:focus, form select:focus {
     display: none;
   }
 }
+.place-picker-container {
+  padding: 20px;
+}

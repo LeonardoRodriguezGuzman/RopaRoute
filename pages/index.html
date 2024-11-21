@@ -80,7 +80,17 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" id="modalContent"></div>
-          <div id="mapContainer" class="map-container" style="width: 100%; height: 300px; overflow: hidden;"></div>
+          <div id="mapContainer" class="map-container" style="width: 100%; height: 300px; overflow: hidden;">
+            <gmpx-api-loader key="AIzaSyA4zZySki5rv-Ckg1SvPx_AYJu1I1zins8" solution-channel="GMP_GE_mapsandplacesautocomplete_v1">
+            </gmpx-api-loader>
+            <gmp-map center="40.749933,-73.98633" zoom="13" map-id="DEMO_MAP_ID">
+              <div slot="control-block-start-inline-start" class="place-picker-container">
+                <gmpx-place-picker placeholder="Enter an address"></gmpx-place-picker>
+              </div>
+              <gmp-advanced-marker></gmp-advanced-marker>
+            </gmp-map>
+            <script src="./mapa.js"></script>
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
           </div>
@@ -89,7 +99,7 @@
     </div>
   
     <!-- Scripts -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=TU_API_KEY&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4zZySki5rv-Ckg1SvPx_AYJu1I1zins8&callback=initMap" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
