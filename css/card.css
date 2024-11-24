@@ -1,14 +1,63 @@
-.tienda { /* Assuming a class 'tienda' is added to the "Tienda" paragraph */
-    font-weight: bold; /* Make "Tienda" bold */
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    padding: 20px;
   }
   
-.direccion { /* Assuming a class 'direccion' is added to the "Dirección" paragraph */
-    margin-top: 0; /* Remove default margin-top */
-}
 
-img {
-    width: max-content;
-}
-div {
+  .card {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     width: 350px;
-}  
+    text-align: center;
+    font-family: Arial, sans-serif;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Imagen */
+  .card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  /* Título de la tienda */
+  .tienda {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Dirección */
+  .direccion {
+    font-size: 1em;
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+  
+  /* Botón de acción */
+  .card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card .btn:hover {
+    background-color: #2980b9;
+  }
+  

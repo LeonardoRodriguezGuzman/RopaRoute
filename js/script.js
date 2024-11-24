@@ -9,5 +9,8 @@ form.addEventListener('submit', (event) => {
   // Validar correo y contraseña
 
   // Iniciar sesión
-  alert(usuario+ ", "+ contrasena);
+  //alert(usuario+ ", "+ contrasena);
+
+  
+
 });

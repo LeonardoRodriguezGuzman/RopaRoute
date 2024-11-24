@@ -9,61 +9,53 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../css/StylesPerfil.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="./card.css" />
     <title>Perfil</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../index.html">RopaRoute</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="busqueda.html">Buscar</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="negocios.html">Negocios</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="perfil.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Usuario1
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/pages/login.html">Iniciar Sesion</a></li>
-                  <li><a class="dropdown-item" href="/pages/login.html">Cerrar Sesion</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
+ 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">RopaRoute</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+       
+            <li class="nav-item">
+              <a class="nav-link" href="./perfil.html">Perfil</a>
+            </li>
+       
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Mis negocios
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="AgregarTienda.html">Agregar Negocio</a></li>
+                <li><a class="dropdown-item" href="negocios.html">Editar negocios</a></li>
+              </ul>
+            </li>
+        
+            <li class="nav-item" id="navLogout">
+              <a class="nav-link" href="#">Cerrar Sesión</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
-    <div class="container text-center">
-      <h1>Perfil</h1>
-      <div class="container text-center">
-        <div><img class="img-fluid" src="https://robohash.org/user" alt="" /></div>
-        <div><h1>Usuario 1</h1></div>
-      </div>
-      <div class="container text-center">
-        <div>
-          <a href="gestion.html" class="btn btn-primary">
-            <img src="../img/lapiz.png" alt="" />
-            Agregar una nueva tienda
-          </a>
-        </div>
-        <div>
-          <a href="negocios.html" class="btn btn-primary">
-            <img src="../img/ojo.png" alt="" />
-            Visitar mis tiendas
-          </a>
-        </div>
-      </div>
+  
+ 
+    <div class="container mt-4 d-flex justify-content-center align-items-center" style="height: 4vh;">
+        <h2>Mis favoritos</h2>
+        
     </div>
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="perfil.js"></script>
   </body>
-</html>
+  </html>
+  
