@@ -147,4 +147,3 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
         console.error("Ocurrió un error al realizar la solicitud POST:", error);
       });
   }
-  

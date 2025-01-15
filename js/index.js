@@ -18,12 +18,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
   let rol = localStorage.getItem("rol");
   if (rol == "Comprador") {
     navNegocios.style.display = "none";
+
   } else if (rol == "Vendedor") {
     navLogin.style.display = "none";
   } else if (rol == "?" || rol == null) {
     navNegocios.style.display = "none";
     navPerfil.style.display = "none";
     navLogout.style.display = "none";
+    navFavoritos.style.display = "none";
   }
 
   cargarTiendas();

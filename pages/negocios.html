@@ -14,7 +14,8 @@
     <title>Document</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">RopaRoute</a>
       <button
@@ -29,15 +30,12 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav me-auto">
           <li class="nav-item" id="perfil">
             <a class="nav-link" href="./perfil.html">Perfil</a>
           </li>
           <li class="nav-item" id="login">
             <a class="nav-link" href="./login.html">Login</a>
-          </li>
-          <li class="nav-item" id="logout">
-            <a class="nav-link" href="./login.html">Cerrar Sesión</a>
           </li>
           <li class="nav-item dropdown" id="negocios">
             <a
@@ -50,25 +48,25 @@
             >
               Mis negocios
             </a>
-            <ul
-              class="dropdown-menu"
-              aria-labelledby="navbarDropdownMenuLink"
-            >
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li>
                 <a class="dropdown-item" href="AgregarTienda.html">Agregar Negocio</a>
               </li>
               <li>
-                <a class="dropdown-item" href="negocios.html"
-                  >Editar negocios</a
-                >
+                <a class="dropdown-item" href="negocios.html">Editar negocios</a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item ms-auto">
+            <a class="nav-link" href="./favoritos.html">Favoritos</a>
+          </li>
+          <li class="nav-item ms-auto" id="logout">
+            <a class="nav-link" href="./login.html">Cerrar Sesión</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-   
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -105,6 +103,6 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="../js/negocios.js"></script>
+    <script src="./negocios.js"></script>
 </body>
 </html>

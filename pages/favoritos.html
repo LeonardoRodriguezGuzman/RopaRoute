@@ -8,32 +8,64 @@
 
 </head>
 <body>
-  <nav class="navbar bg-body-tertiary">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <button type="button" class="btn btn-light">Atrás</button>
-      <a class="navbar-brand">Lista de favoritos</a>
-      <form class="d-flex" role="combobox">
-        <button class="bi bi-three-dots" type="submit" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
-      </form>
+      <a class="navbar-brand" href="index.html">RopaRoute</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item" id="perfil">
+            <a class="nav-link" href="./perfil.html">Perfil</a>
+          </li>
+          <li class="nav-item dropdown" id="negocios">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Mis negocios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item" href="AgregarTienda.html">Agregar Negocio</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="negocios.html">Editar negocios</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item ms-auto">
+            <a class="nav-link" href="favoritos.html">Favoritos</a>
+          </li>
+          <li class="nav-item ms-auto" id="logout">
+            <a class="nav-link" href="./login.html">Cerrar Sesión</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
-  
-  <div class="card mt-2" style="width: 25rem; margin-left: 3px;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img src="..." class="card-img" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Cowboy Store</h5>
-          <p class="card-text">Calle 16 de Septiembre 34</p>
-          <p class="card-text">Uriangato, Guanajuato, México</p>
-          <a href="#" class="btn btn-light">Detalles</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-      
+  <div class="container mt-4 d-flex justify-content-center align-items-center" style="height: 4vh;">
+    <h2>Mis favoritos</h2>
+   
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="favoritos.js"></script>
 </body>
 </html>

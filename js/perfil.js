@@ -130,21 +130,4 @@ function generarTienda({ idTienda, nombre, ubicacion, telefono, descripcion }) {
     document.body.appendChild(card);
   }
 
-  function cargarTiendas() {
-    axios
-      .post("http://localhost:3000/getFavorito", {
-        idUser:localStorage.getItem("user")
-      })
-      .then(function (response) {
-        // console.log(response.data);
-        localStorage.setItem("data", JSON.stringify(response.data));
-        datos = JSON.parse(localStorage.getItem("data"));
-        response.data.forEach((element) => {
-          generarTienda(element);
-        });
-      })
-      .catch(function (error) {
-        console.error("Ocurrió un error al realizar la solicitud POST:", error);
-      });
-  }
   
